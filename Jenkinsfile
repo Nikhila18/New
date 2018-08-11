@@ -2,8 +2,8 @@
 pipeline {
     agent any
     tools { 
-        maven 'Maven 3.5.3' 
-        jdk 'jdk8' 
+        maven 'Maven_3.5.3' 
+        jdk 'java' 
     }
     stages {
         stage ('Initialize') {
@@ -15,7 +15,6 @@ pipeline {
             }
         }
 
-    stages ('Build stages'){
         stage ('compile stage') {
             steps {
              
@@ -39,4 +38,4 @@ pipeline {
         }
       }
    }
-}
+
