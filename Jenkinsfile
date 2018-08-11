@@ -15,29 +15,25 @@ pipeline {
             }
         }
 
-        stage ('Build') {
-            steps {
-                echo 'This is a minimal pipeline.'
-
-    stages {
-        stage('compile stage') {
+    stages ('Build stages'){
+        stage ('compile stage') {
             steps {
              
                     sh 'mvn compile'
             }
           }
-        }
-        stage('Test') {
+        
+        stage ('Test') {
             steps {
-                    {
+                    
                     sh 'mvn test'
             }
           }
-        }
+        
                
         stage('Deploy') {
             steps {
-                    {
+                    
                     sh 'mvn deploy'
           }
         }
