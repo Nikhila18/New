@@ -1,27 +1,44 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
+    tools { 
+        maven 'Maven 3.5.3' 
+        jdk 'jdk8' 
+    }
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
 
     stages {
         stage('compile stage') {
             steps {
-              withmaven(maven: 'maven_3.5.3'){
-                    sh'mvn compile'
+             
+                    sh 'mvn compile'
             }
           }
         }
         stage('Test') {
             steps {
-                withmaven(maven: 'maven_3.5.3'){
-                    sh'mvn test'
+                    {
+                    sh 'mvn test'
             }
           }
         }
                
         stage('Deploy') {
             steps {
-                withmaven(maven: 'maven_3.5.3'){
-                    sh'mvn deploy'
+                    {
+                    sh 'mvn deploy'
           }
         }
       }
